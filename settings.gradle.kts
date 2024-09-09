@@ -23,3 +23,5 @@ rootProject.name = "PET"
 include(":app")
 include(":auth")
 include(":auth:feature_auth")
+include(":core_ui")
+include(":core_navigation")

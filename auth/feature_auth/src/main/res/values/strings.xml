@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="auth_title">Авторизация</string>
+    <string name="sign_in">Создать новый аккаунт</string>
+    <string name="enter_phone_number">Ведите номер телефона</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="resume">Продолжить</string>
+</resources>

@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.feature_auth"
+    namespace = "com.example.core_navigation"
     compileSdk = 34
 
     defaultConfig {
@@ -47,16 +47,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Compose
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-
-    //Compose Navigation
-    implementation(libs.androidx.navigation.runtime.ktx)
-
-    implementation(project(":core_ui"))
-    implementation(project(":core_navigation"))
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("androidx.navigation:navigation-compose:2.5.3")
 }
