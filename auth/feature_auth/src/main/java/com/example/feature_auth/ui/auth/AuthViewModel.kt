@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthScreenViewModel @Inject constructor() : ViewModel() {
+class AuthViewModel @Inject constructor() : ViewModel() {
 
     val screenState: StateFlow<ScreenState> get() = _screenState.asStateFlow()
     private val _screenState = MutableStateFlow<ScreenState>(ScreenState())

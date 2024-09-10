@@ -7,18 +7,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.unit.dp
-import com.example.core_ui.CustomColor
-import com.example.core_ui.Padding
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.example.core_ui.CustomColor
 import com.example.core_ui.FontStyle
-import com.example.feature_auth.R
+import com.example.core_ui.Padding
 
 @Composable
 fun CharView(
@@ -33,7 +30,7 @@ fun CharView(
     }
     Box(
         modifier = Modifier
-            .width(Padding._73)
+            .width(Padding._44)
             .background(CustomColor.InputTextColor, RoundedCornerShape(8.dp))
             .height(Padding._48)
             .border(

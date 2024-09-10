@@ -18,14 +18,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.core_navigation.route.PinCodeDestination
+import com.example.core_navigation.route.RegisterDestination
 import com.example.core_ui.CustomColor
 import com.example.core_ui.FontStyle
 import com.example.core_ui.Padding
 import com.example.feature_auth.R
+import com.example.feature_auth.domain.Constants
 import com.example.feature_auth.ui.auth.view.PhoneNumberGroup
 
 @Composable
-fun AuthScreen(navController: NavController, viewModel: AuthScreenViewModel = hiltViewModel()) {
+fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltViewModel()) {
     val phone = viewModel.phoneNumber.collectAsState().value
     val screenState = viewModel.screenState.collectAsState().value
     val code = viewModel.code.collectAsState().value
@@ -56,13 +58,14 @@ fun AuthScreen(navController: NavController, viewModel: AuthScreenViewModel = hi
                 onChangeFlag = viewModel::onChangeFlag
             )
             Spacer(modifier = Modifier.height(Padding._16))
+            val enable = phone.length == Constants.PHONE_COUNT && code.isNotBlank()
             Text(
                 text = stringResource(id = R.string.sign_in),
-                color = CustomColor.LinkColor,
+                color = if (enable) CustomColor.LinkColor else CustomColor.Grey,
                 style = FontStyle.regular_16,
                 modifier = Modifier.clickable {
-                    navController.navigate(
-                        PinCodeDestination.createRoute(phone)
+                    if (enable) navController.navigate(
+                        RegisterDestination.createRoute(code + phone)
                     )
                 }
             )

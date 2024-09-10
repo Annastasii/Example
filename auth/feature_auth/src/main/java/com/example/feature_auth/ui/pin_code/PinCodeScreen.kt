@@ -26,6 +26,7 @@ import com.example.core_ui.FontStyle
 import com.example.core_ui.Padding
 import com.example.feature_auth.R
 import com.example.feature_auth.domain.Constants.CORRECT_PIN
+import com.example.feature_auth.domain.Constants.PIN_COUNT
 import com.example.feature_auth.ui.pin_code.view.PinCodeTextField
 
 @Composable
@@ -52,7 +53,7 @@ fun PinCodeScreen(navController: NavController, viewModel: PinCodeViewModel = hi
             )
             Spacer(modifier = Modifier.height(Padding._16))
             PinCodeTextField(pin, viewModel::enterPin)
-            if (!isPinCorrect) {
+            if (!isPinCorrect && pin.length == PIN_COUNT) {
                 Spacer(modifier = Modifier.height(Padding._8))
                 Text(
                     text = stringResource(id = R.string.incorrect_pin),

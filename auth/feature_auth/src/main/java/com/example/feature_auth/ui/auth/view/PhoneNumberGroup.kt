@@ -80,7 +80,6 @@ internal fun PhoneNumberGroup(
                     style = FontStyle.regular_14
                 )
             }
-            Spacer(modifier = Modifier.width(Padding._16))
         }
     }
 }

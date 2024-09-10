@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <string name="auth_title">Авторизация</string>
     <string name="sign_in">Создать новый аккаунт</string>
+    <string name="register">Регистрация</string>
+    <string name="registration">Зарегистрироваться</string>
     <string name="enter_phone_number">Ведите номер телефона</string>
     <string name="phone_number">Номер телефона</string>
     <string name="resume">Продолжить</string>
@@ -11,4 +13,8 @@
     <string name="write_pin_code">Введите код</string>
     <string name="incorrect_pin">Неверный код</string>
     <string name="confirm">Подтвердить</string>
+    <string name="empty"></string>
+    <string name="name">ФИО</string>
+    <string name="username">Имя пользователя</string>
+    <string name="usernameMessage">Имя пользователя может содержать:\n Заглавные латинские буквы: от A до Z \n Строчные латинские буквы: от a до z \n Цифры от 0 до 9 \n Символы: -_ </string>
 </resources>
