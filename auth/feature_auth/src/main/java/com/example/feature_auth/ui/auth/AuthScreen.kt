@@ -24,13 +24,6 @@ import com.example.core_ui.Padding
 import com.example.feature_auth.R
 import com.example.feature_auth.ui.auth.view.PhoneNumberGroup
 
-//import com.example.core_navigation.routes.PinCodeDestination
-//import com.example.core_ui.Padding
-//import com.example.core_ui.view.bottom_app_bar.BottomAppBar
-//import com.example.feauture_auth.R
-//import com.example.feauture_auth.view.first_auth.ui.first_auth.view.FindEmployeeColumn
-//import com.example.feauture_auth.view.first_auth.ui.first_auth.view.FindWorkColumn
-
 @Composable
 fun AuthScreen(navController: NavController, viewModel: AuthScreenViewModel = hiltViewModel()) {
     val phone = viewModel.phoneNumber.collectAsState().value
@@ -57,7 +50,7 @@ fun AuthScreen(navController: NavController, viewModel: AuthScreenViewModel = hi
                 phoneNumber = phone,
                 screenState = screenState,
                 code = code,
-                onButtonClick = { navController.navigate(PinCodeDestination.createRoute(phone)) },
+                onButtonClick = { navController.navigate(PinCodeDestination.createRoute(code + phone)) },
                 onChangePhone = viewModel::onChangeNumber,
                 onChangeCode = viewModel::onChangeCode,
                 onChangeFlag = viewModel::onChangeFlag
