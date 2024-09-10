@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.core_navigation.route.PinCodeDestination
 import com.example.core_ui.CustomColor
@@ -30,8 +32,10 @@ import com.example.feature_auth.ui.auth.view.PhoneNumberGroup
 //import com.example.feauture_auth.view.first_auth.ui.first_auth.view.FindWorkColumn
 
 @Composable
-fun AuthScreen(navController: NavController) {
-    val phone = "viewModel.email.collectAsState().value"
+fun AuthScreen(navController: NavController, viewModel: AuthScreenViewModel = hiltViewModel()) {
+    val phone = viewModel.phoneNumber.collectAsState().value
+    val screenState = viewModel.screenState.collectAsState().value
+    val code = viewModel.code.collectAsState().value
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -51,9 +55,13 @@ fun AuthScreen(navController: NavController) {
             Spacer(modifier = Modifier.height(Padding._38))
             PhoneNumberGroup(
                 phoneNumber = phone,
-                enable = false,
+                screenState = screenState,
+                code = code,
                 onButtonClick = { navController.navigate(PinCodeDestination.createRoute(phone)) },
-                onChangePhone = { })
+                onChangePhone = viewModel::onChangeNumber,
+                onChangeCode = viewModel::onChangeCode,
+                onChangeFlag = viewModel::onChangeFlag
+            )
             Spacer(modifier = Modifier.height(Padding._16))
             Text(
                 text = stringResource(id = R.string.sign_in),
@@ -61,9 +69,7 @@ fun AuthScreen(navController: NavController) {
                 style = FontStyle.regular_16,
                 modifier = Modifier.clickable {
                     navController.navigate(
-                        PinCodeDestination.createRoute(
-                            phone
-                        )
+                        PinCodeDestination.createRoute(phone)
                     )
                 }
             )

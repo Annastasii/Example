@@ -6,4 +6,5 @@
     <string name="enter_phone_number">Ведите номер телефона</string>
     <string name="phone_number">Номер телефона</string>
     <string name="resume">Продолжить</string>
+    <string name="code">+%s</string>
 </resources>
