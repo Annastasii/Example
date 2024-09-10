@@ -13,8 +13,8 @@ object PinCodeDestination : NavigationDestination {
             navArgument(PHONE) { type = NavType.StringType }
         )
 
-    const val PHONE = "email"
-    private const val PIN_CODE_SCREEN_ROUTE = "defect_details_screen"
+    const val PHONE = "phone"
+    private const val PIN_CODE_SCREEN_ROUTE = "pin_code_screen"
 
     fun createRoute(phone: String) =
         "$PIN_CODE_SCREEN_ROUTE/$phone"

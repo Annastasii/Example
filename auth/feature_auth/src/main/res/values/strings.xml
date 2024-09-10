@@ -7,4 +7,8 @@
     <string name="phone_number">Номер телефона</string>
     <string name="resume">Продолжить</string>
     <string name="code">+%s</string>
+    <string name="send">Отправили код на номер %s</string>
+    <string name="write_pin_code">Введите код</string>
+    <string name="incorrect_pin">Неверный код</string>
+    <string name="confirm">Подтвердить</string>
 </resources>

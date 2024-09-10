@@ -46,23 +46,13 @@ fun CharView(
             ),
         contentAlignment = Alignment.Center
     ) {
-        if (char.isEmpty()) {
-//            Icon(
-//                modifier = Modifier
-//                    .padding(Padding._12),
-//                painter = painterResource(id = R.drawable.ic_stars),
-//                contentDescription = null,
-//                tint = CustomColor.Grey
-//            )
-        } else {
-            Text(
-                modifier = Modifier
-                    .padding(Padding._12),
-                text = char,
-                style = FontStyle.regular_16,
-                color = CustomColor.TextColor,
-                textAlign = TextAlign.Center,
-            )
-        }
+        Text(
+            modifier = Modifier
+                .padding(Padding._12),
+            text = char,
+            style = FontStyle.regular_16,
+            color = CustomColor.TextColor,
+            textAlign = TextAlign.Center,
+        )
     }
 }
