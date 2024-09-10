@@ -1,25 +1,19 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
 }
 
 android {
-    namespace = "com.example.pet"
+    namespace = "com.example.feature_profile"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.pet"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -44,36 +38,26 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    // Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 
-    //Navigate
-    implementation(libs.androidx.navigation.common.ktx)
-
-    //Navigation Compose
-    implementation(libs.androidx.navigation.compose)
+    //Compose Navigation
+    implementation(libs.androidx.navigation.runtime.ktx)
 
     //Hilt
     implementation("com.google.dagger:hilt-android:2.52")
@@ -82,9 +66,6 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.52")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
+    implementation(project(":core_ui"))
     implementation(project(":core_navigation"))
-    implementation(project(":auth:feature_auth"))
-    implementation(project(":profile:feature_profile"))
-    implementation(project(":message:feature_message"))
-    implementation(project(":core_data:core_database"))
 }
