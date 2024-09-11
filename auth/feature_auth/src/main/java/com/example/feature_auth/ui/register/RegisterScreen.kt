@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.core_navigation.route.MessageListDestination
 import com.example.core_navigation.route.PinCodeDestination
 import com.example.core_ui.CustomColor
 import com.example.core_ui.FontStyle
@@ -74,7 +75,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
                     enabled = name.isNotBlank() && username.isNotBlank(),
                     onClick = {
                         if (usernameValidator(username)) navController.navigate(
-                            PinCodeDestination.createRoute(viewModel.phone)
+                            MessageListDestination.route()
                         ) else {
                             viewModel.showMessage(true)
                         }

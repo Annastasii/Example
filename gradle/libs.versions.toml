@@ -15,6 +15,7 @@ navigationComposeVersion = "2.5.3"
 navigationRuntimeKtx = "2.8.0"
 navigationCommonKtx = "2.8.0"
 navigationCompose = "2.8.0"
+media3Common = "1.4.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -38,6 +39,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigationCommonKtx" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3Common" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

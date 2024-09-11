@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.media3.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,6 +66,9 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     kapt("com.google.dagger:hilt-compiler:2.52")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
+
+    //Refresh
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.28.0")
 
     implementation(project(":core_ui"))
     implementation(project(":core_navigation"))

@@ -6,6 +6,7 @@ object CustomColor {
 
     val PrimaryBgColor = Color(0xFF0C0C0C)
     val SecondaryBgColor = Color(0xFF222325)
+    val BarColor = Color(0xFF282829)
     val TextColor = Color(0xFFFFFFFF)
     val LinkColor = Color(0xFF2B7EFE)
     val NotActiveTextColor = Color(0xFFFFFFFF)
