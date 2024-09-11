@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import com.example.core_ui.view.bottom_app_bar.BottomAppBar
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -49,6 +50,9 @@ fun DialogListScreen(
                         .padding(Padding._16)
                 )
             }
+        },
+        bottomBar = {
+            BottomAppBar(navController)
         }
     ) { innerPadding ->
         if (viewModel.sortedDialog.isEmpty()) {

@@ -1,66 +1,56 @@
 package com.example.core_ui.view.bottom_app_bar
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.core_ui.CustomColor
+import com.example.core_ui.FontStyle
 import com.example.core_ui.view.bottom_app_bar.models.NavigationItem
 
 @Composable
-fun BottomAppBar(navController: NavController, isClickable: Boolean = true) {
-//    val items = listOf(
-//
-//    )
-//    BottomNavigation(backgroundColor = CustomColor.PrimaryBgColor) {
-//        val navBackStackEntry by navController.currentBackStackEntryAsState()
-//        val currentRoute = navBackStackEntry?.destination
-//        items.forEach { item ->
-//            BottomNavigationItem(
-//                selected = currentRoute?.hierarchy?.any { it.route == item.route } == true,
-//                onClick = {
-//                    if (isClickable) {
-//                        when (item) {
-//                            NavigationItem.Search -> {
-//                                if (currentRoute?.parent?.route != item.route) {
-//                                    navController.navigate(item.route)
-//                                }
-//                            }
-//
-//                            NavigationItem.Favourite -> {
-//                                if (currentRoute?.parent?.route != item.route) {
-//                                    navController.navigate(item.route)
-//                                }
-//                            }
-//
-//                            else -> {
-//                                if (currentRoute?.parent?.route != item.route) {
-//                                    navController.navigate(item.route)
-//                                }
-//                            }
-//                        }
-//                    }
-//                },
-//                icon = {
-//                    BottomIcon(item = item)
-//                },
-//                label = {
-//                    Text(
-//                        text = stringResource(item.title),
-//                        color = if (currentRoute?.hierarchy?.any
-//                            { it.route == item.route } == true
-//                        ) CustomColor.ActiveButtonColor else CustomColor.Grey,
-//                        style = FontStyle.Style_10
-//                    )
-//                },
-//                selectedContentColor = CustomColor.ActiveButtonColor,
-//                unselectedContentColor = CustomColor.Grey
-//            )
-//        }
-//    }
+fun BottomAppBar(navController: NavController) {
+    val items = listOf(
+        NavigationItem.Message,
+        NavigationItem.Profile
+    )
+    BottomNavigation(backgroundColor = CustomColor.BarColor) {
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination
+        items.forEach { item ->
+            BottomNavigationItem(
+                selected = currentRoute?.hierarchy?.any { it.route == item.route } == true,
+                onClick = {
+                    if (currentRoute?.parent?.route != item.route) {
+                        navController.navigate(item.route)
+                    }
+                },
+                icon = {
+                    BottomIcon(item = item)
+                },
+                label = {
+                    Text(
+                        text = stringResource(item.title),
+                        color = if (currentRoute?.hierarchy?.any { it.route == item.route } == true
+                        ) CustomColor.ActiveButtonColor else CustomColor.Grey,
+                        style = FontStyle.regular_10
+                    )
+                },
+                selectedContentColor = CustomColor.ActiveButtonColor,
+                unselectedContentColor = CustomColor.Grey
+            )
+        }
+    }
 }
 
 
@@ -73,7 +63,7 @@ private fun BottomIcon(
 ) {
     when (item) {
         //todo
-//        NavigationItem.Favourite -> {
+//        NavigationItem.Message -> {
 //            BadgedBox(
 //                badge = {
 //                    if (notViewedTaskCount > 0) {
@@ -105,6 +95,7 @@ private fun BottomIcon(
 //                )
 //            }
 //        }
+
         else -> {
             Icon(
                 painter = painterResource(item.icon),
