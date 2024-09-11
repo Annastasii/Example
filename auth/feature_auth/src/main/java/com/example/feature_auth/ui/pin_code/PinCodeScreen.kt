@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.core_navigation.route.MessageListDestination
+import com.example.core_navigation.route.DialogListDestination
 import com.example.core_ui.CustomColor
 import com.example.core_ui.FontStyle
 import com.example.core_ui.Padding
@@ -64,7 +64,7 @@ fun PinCodeScreen(navController: NavController, viewModel: PinCodeViewModel = hi
             }
             Spacer(modifier = Modifier.height(Padding._16))
             Button(
-                onClick = { navController.navigate(MessageListDestination.route()) },
+                onClick = { navController.navigate(DialogListDestination.route()) },
                 enabled = isPinCorrect,
                 modifier = Modifier
                     .fillMaxWidth()

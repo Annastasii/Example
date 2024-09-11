@@ -8,8 +8,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.example.core_navigation.route.AuthDestination
-import com.example.core_navigation.route.MessageListDestination
+import com.example.core_navigation.route.DialogListDestination
 import com.example.pet.navigation.globalGraph
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,6 +28,6 @@ fun MainContent(navController: NavHostController) {
     val context = LocalContext.current
     NavHost(
         navController = navController,
-        startDestination = MessageListDestination.route()
+        startDestination = DialogListDestination.route()
     ) { globalGraph(context, navController) }
 }

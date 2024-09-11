@@ -21,7 +21,7 @@ import java.util.Calendar
 import java.util.Date
 
 @Composable
-internal fun MessageItem(dialogModel: DialogModel) {
+internal fun Item(dialogModel: DialogModel) {
     val lastMessage = dialogModel.messageList.last()
     Row(Modifier.padding(horizontal = Padding._12, vertical = Padding._12)) {
         Column {
@@ -52,9 +52,13 @@ private fun getDateFormat(date: Date): String {
     calendar.time = date
     val rightNow = Calendar.getInstance()
     rightNow.time = Date()
+    val match =
+        calendar.get(Calendar.MONTH) == rightNow.get(Calendar.MONTH) && calendar.get(Calendar.YEAR) == rightNow.get(
+            Calendar.YEAR
+        )
     return when {
-        (calendar.get(Calendar.DAY_OF_MONTH) == rightNow.get(Calendar.DAY_OF_MONTH)) -> date.convertToTheMinute()
-        (calendar.get(Calendar.WEEK_OF_MONTH) == rightNow.get(Calendar.WEEK_OF_MONTH)) -> getDayOfTheWeek(
+        (calendar.get(Calendar.DAY_OF_MONTH) == rightNow.get(Calendar.DAY_OF_MONTH) && match) -> date.convertToTheMinute()
+        (calendar.get(Calendar.WEEK_OF_MONTH) == rightNow.get(Calendar.WEEK_OF_MONTH) && match) -> getDayOfTheWeek(
             calendar.get(Calendar.DAY_OF_WEEK)
         )
 
