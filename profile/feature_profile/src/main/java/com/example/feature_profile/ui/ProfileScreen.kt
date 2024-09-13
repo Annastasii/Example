@@ -57,8 +57,11 @@ fun ProfileScreen(navController: NavController, viewModel: ProfileViewModel = hi
                         .fillMaxWidth()
                 ) {
                     PhoneNumberGroup(phone = "7868665")
+                    Spacer(modifier = Modifier.height(Padding._12))
                     BirthdayGroup(date = profile.birthday) { viewModel.onChangeBirthday(it) }
+                    Spacer(modifier = Modifier.height(Padding._12))
                     CityGroup(city = profile.city) { viewModel.onChangeCity(it) }
+                    Spacer(modifier = Modifier.height(Padding._12))
                     AboutMeGroup(about = profile.aboutMe) { viewModel.onChangeAbout(it) }
                     Spacer(modifier = Modifier.height(Padding._12))
                     Row(verticalAlignment = Alignment.CenterVertically) {
