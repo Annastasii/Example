@@ -6,6 +6,8 @@ object Padding {
 
     val _0 = 0.dp
     val _1 = 1.dp
+    val _2 = 2.dp
+    val _4 = 4.dp
     val _8 = 8.dp
     val _12 = 12.dp
     val _16 = 16.dp

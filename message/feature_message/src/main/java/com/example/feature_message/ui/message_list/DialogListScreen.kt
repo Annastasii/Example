@@ -56,7 +56,12 @@ fun DialogListScreen(
         }
     ) { innerPadding ->
         if (viewModel.sortedDialog.isEmpty()) {
-            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(CustomColor.PrimaryBgColor),
+                contentAlignment = Alignment.Center
+            ) {
                 Text(
                     text = stringResource(id = R.string.empty),
                     color = CustomColor.TextColor,

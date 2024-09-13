@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="phone_number">Номер телефона</string>
+    <string name="birthday">День рождение</string>
+    <string name="zodiac">Знак зодиака</string>
+    <string name="city">Город</string>
+    <string name="about">Обо мне</string>
+    <string name="save">Сохранить</string>
+</resources>

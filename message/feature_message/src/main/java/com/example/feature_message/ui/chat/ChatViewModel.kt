@@ -28,5 +28,4 @@ class ChatViewModel @Inject constructor(
     fun onChangeValue(str: String) {
         messageValue.value = str
     }
-
 }

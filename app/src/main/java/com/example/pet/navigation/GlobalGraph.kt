@@ -8,12 +8,14 @@ import com.example.core_navigation.route.AuthDestination
 import com.example.core_navigation.route.ChatDestination
 import com.example.core_navigation.route.DialogListDestination
 import com.example.core_navigation.route.PinCodeDestination
+import com.example.core_navigation.route.ProfileDestination
 import com.example.core_navigation.route.RegisterDestination
 import com.example.feature_auth.ui.auth.AuthScreen
 import com.example.feature_auth.ui.pin_code.PinCodeScreen
 import com.example.feature_auth.ui.register.RegisterScreen
 import com.example.feature_message.ui.chat.ChatScreen
 import com.example.feature_message.ui.message_list.DialogListScreen
+import com.example.feature_profile.ui.ProfileScreen
 
 /** Глобальный навигационный граф */
 fun NavGraphBuilder.globalGraph(
@@ -40,4 +42,8 @@ fun NavGraphBuilder.globalGraph(
     composable(
         destination = ChatDestination
     ) { ChatScreen(navController) }
+
+    composable(
+        destination = ProfileDestination
+    ) { ProfileScreen(navController) }
 }
