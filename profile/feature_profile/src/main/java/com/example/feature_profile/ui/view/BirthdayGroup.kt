@@ -166,41 +166,41 @@ fun getZodiac(date: String): String {
     val calendar = Calendar.getInstance()
     calendar.time = d
     return when {
-        (calendar.get(Calendar.MONTH) == 12 && calendar.get(Calendar.DAY_OF_MONTH) >= 22)
-                || (calendar.get(Calendar.MONTH) == 1 && calendar.get(Calendar.DAY_OF_MONTH) <= 19) -> "Козерог"
+        (calendar.get(Calendar.MONTH) == 11 && calendar.get(Calendar.DAY_OF_MONTH) >= 22)
+                || (calendar.get(Calendar.MONTH) == 0 && calendar.get(Calendar.DAY_OF_MONTH) <= 19) -> "Козерог"
 
-        (calendar.get(Calendar.MONTH) == 1 && calendar.get(Calendar.DAY_OF_MONTH) >= 20)
-                || (calendar.get(Calendar.MONTH) == 2 && calendar.get(Calendar.DAY_OF_MONTH) <= 18) -> "Водолей"
+        (calendar.get(Calendar.MONTH) == 0 && calendar.get(Calendar.DAY_OF_MONTH) >= 20)
+                || (calendar.get(Calendar.MONTH) == 1 && calendar.get(Calendar.DAY_OF_MONTH) <= 18) -> "Водолей"
 
-        (calendar.get(Calendar.MONTH) == 2 && calendar.get(Calendar.DAY_OF_MONTH) >= 19)
-                || (calendar.get(Calendar.MONTH) == 4 && calendar.get(Calendar.DAY_OF_MONTH) <= 20) -> "Рыбы"
+        (calendar.get(Calendar.MONTH) == 1 && calendar.get(Calendar.DAY_OF_MONTH) >= 19)
+                || (calendar.get(Calendar.MONTH) == 2 && calendar.get(Calendar.DAY_OF_MONTH) <= 20) -> "Рыбы"
 
-        (calendar.get(Calendar.MONTH) == 3 && calendar.get(Calendar.DAY_OF_MONTH) >= 21)
-                || (calendar.get(Calendar.MONTH) == 4 && calendar.get(Calendar.DAY_OF_MONTH) <= 19) -> "Овен"
+        (calendar.get(Calendar.MONTH) == 2 && calendar.get(Calendar.DAY_OF_MONTH) >= 21)
+                || (calendar.get(Calendar.MONTH) == 3 && calendar.get(Calendar.DAY_OF_MONTH) <= 19) -> "Овен"
 
-        (calendar.get(Calendar.MONTH) == 4 && calendar.get(Calendar.DAY_OF_MONTH) >= 20)
-                || (calendar.get(Calendar.MONTH) == 5 && calendar.get(Calendar.DAY_OF_MONTH) <= 20) -> "Телец"
+        (calendar.get(Calendar.MONTH) == 3 && calendar.get(Calendar.DAY_OF_MONTH) >= 20)
+                || (calendar.get(Calendar.MONTH) == 4 && calendar.get(Calendar.DAY_OF_MONTH) <= 20) -> "Телец"
+
+        (calendar.get(Calendar.MONTH) == 4 && calendar.get(Calendar.DAY_OF_MONTH) >= 21)
+                || (calendar.get(Calendar.MONTH) == 5 && calendar.get(Calendar.DAY_OF_MONTH) <= 20) -> "Близнецы"
 
         (calendar.get(Calendar.MONTH) == 5 && calendar.get(Calendar.DAY_OF_MONTH) >= 21)
-                || (calendar.get(Calendar.MONTH) == 6 && calendar.get(Calendar.DAY_OF_MONTH) <= 20) -> "Близнецы"
+                || (calendar.get(Calendar.MONTH) == 6 && calendar.get(Calendar.DAY_OF_MONTH) <= 2) -> "Рак"
 
-        (calendar.get(Calendar.MONTH) == 6 && calendar.get(Calendar.DAY_OF_MONTH) >= 21)
-                || (calendar.get(Calendar.MONTH) == 7 && calendar.get(Calendar.DAY_OF_MONTH) <= 2) -> "Рак"
+        (calendar.get(Calendar.MONTH) == 6 && calendar.get(Calendar.DAY_OF_MONTH) >= 23)
+                || (calendar.get(Calendar.MONTH) == 7 && calendar.get(Calendar.DAY_OF_MONTH) <= 22) -> "Лев"
 
         (calendar.get(Calendar.MONTH) == 7 && calendar.get(Calendar.DAY_OF_MONTH) >= 23)
-                || (calendar.get(Calendar.MONTH) == 8 && calendar.get(Calendar.DAY_OF_MONTH) <= 22) -> "Лев"
+                || (calendar.get(Calendar.MONTH) == 8 && calendar.get(Calendar.DAY_OF_MONTH) <= 22) -> "Дева"
 
         (calendar.get(Calendar.MONTH) == 8 && calendar.get(Calendar.DAY_OF_MONTH) >= 23)
-                || (calendar.get(Calendar.MONTH) == 9 && calendar.get(Calendar.DAY_OF_MONTH) <= 22) -> "Дева"
+                || (calendar.get(Calendar.MONTH) == 9 && calendar.get(Calendar.DAY_OF_MONTH) <= 22) -> "Весы"
 
         (calendar.get(Calendar.MONTH) == 9 && calendar.get(Calendar.DAY_OF_MONTH) >= 23)
-                || (calendar.get(Calendar.MONTH) == 10 && calendar.get(Calendar.DAY_OF_MONTH) <= 22) -> "Весы"
+                || (calendar.get(Calendar.MONTH) == 10 && calendar.get(Calendar.DAY_OF_MONTH) <= 21) -> "Скорпион"
 
-        (calendar.get(Calendar.MONTH) == 10 && calendar.get(Calendar.DAY_OF_MONTH) >= 23)
-                || (calendar.get(Calendar.MONTH) == 11 && calendar.get(Calendar.DAY_OF_MONTH) <= 21) -> "Скорпион"
-
-        (calendar.get(Calendar.MONTH) == 11 && calendar.get(Calendar.DAY_OF_MONTH) >= 22)
-                || (calendar.get(Calendar.MONTH) == 12 && calendar.get(Calendar.DAY_OF_MONTH) <= 21) -> "Стрелец"
+        (calendar.get(Calendar.MONTH) == 10 && calendar.get(Calendar.DAY_OF_MONTH) >= 22)
+                || (calendar.get(Calendar.MONTH) == 11 && calendar.get(Calendar.DAY_OF_MONTH) <= 21) -> "Стрелец"
 
         else -> ""
     }

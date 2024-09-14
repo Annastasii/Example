@@ -14,7 +14,7 @@ class ProfileViewModel @Inject constructor() : ViewModel() {
         ProfileModel(
             name = "Петр Афанасьев",
             username = "rus_af",
-            birthday = "2024-09-12",
+            birthday = "2024-10-12",
             city = "Moscow",
             aboutMe = "Инфо",
             avatar = FileModel(

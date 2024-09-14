@@ -31,6 +31,7 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
     val phone = viewModel.phoneNumber.collectAsState().value
     val screenState = viewModel.screenState.collectAsState().value
     val code = viewModel.code.collectAsState().value
+    viewModel.f()
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier

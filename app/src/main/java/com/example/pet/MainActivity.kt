@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.example.core_navigation.route.AuthDestination
 import com.example.core_navigation.route.DialogListDestination
 import com.example.pet.navigation.globalGraph
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,10 +26,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainContent(navController: NavHostController) {
+fun MainContent(navController: NavHostController,viewModel: MainViewModel = hiltViewModel()) {
     val context = LocalContext.current
     NavHost(
         navController = navController,
-        startDestination = DialogListDestination.route()
+        startDestination = AuthDestination.route()
     ) { globalGraph(context, navController) }
 }

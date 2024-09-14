@@ -11,9 +11,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/auth" />
+            <option value="$PROJECT_DIR$/auth/core_auth" />
+            <option value="$PROJECT_DIR$/auth/core_auth/core_auth_api" />
             <option value="$PROJECT_DIR$/auth/feature_auth" />
             <option value="$PROJECT_DIR$/core_data" />
             <option value="$PROJECT_DIR$/core_data/core_database" />
+            <option value="$PROJECT_DIR$/core_data/core_network" />
             <option value="$PROJECT_DIR$/core_navigation" />
             <option value="$PROJECT_DIR$/core_ui" />
             <option value="$PROJECT_DIR$/message" />
