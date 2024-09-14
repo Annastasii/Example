@@ -33,10 +33,13 @@ import com.example.feature_auth.ui.pin_code.view.PinCodeTextField
 @Composable
 fun PinCodeScreen(
     navController: NavController,
-    viewModel: PinCodeViewModel = hiltViewModel()
+    viewModel: PinCodeViewModel = hiltViewModel(),
 ) {
     val pin = viewModel.pin.collectAsState().value
     val isPinCorrect = pin == CORRECT_PIN
+    viewModel.userId.collectAsState().value?.let {
+        navController.navigate(DialogListDestination.route())
+    }
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -45,7 +48,7 @@ fun PinCodeScreen(
     ) {
         Column(modifier = Modifier.padding(Padding._16)) {
             Text(
-                text = stringResource(id = R.string.send, viewModel.phone),
+                text = stringResource(id = R.string.send, viewModel.code + viewModel.phone),
                 color = CustomColor.TextColor,
                 style = FontStyle.medium_16
             )
@@ -67,7 +70,7 @@ fun PinCodeScreen(
             }
             Spacer(modifier = Modifier.height(Padding._16))
             Button(
-                onClick = { navController.navigate(DialogListDestination.route()) },
+                onClick = { viewModel.checkPin() },
                 enabled = isPinCorrect,
                 modifier = Modifier
                     .fillMaxWidth()

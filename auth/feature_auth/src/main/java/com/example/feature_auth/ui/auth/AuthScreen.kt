@@ -58,7 +58,7 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
                 screenState = screenState,
                 code = code,
                 onButtonClick = {
-                    navController.navigate(PinCodeDestination.createRoute(code + phone))
+                    navController.navigate(PinCodeDestination.createRoute(code, phone))
                     viewModel.authorization(code + phone)
                 },
                 onChangePhone = viewModel::onChangeNumber,
@@ -73,7 +73,7 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
                 style = FontStyle.regular_16,
                 modifier = Modifier.clickable {
                     viewModel.authorization(code + phone)
-                    navController.navigate(RegisterDestination.createRoute(code + phone))
+                    navController.navigate(RegisterDestination.createRoute(code, phone))
                 }
             )
         }

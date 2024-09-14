@@ -22,26 +22,30 @@ class PinCodeViewModel @Inject constructor(
 
     var phone = savedStateHandle.get<String>(PinCodeDestination.PHONE)!!
 
+    var code = savedStateHandle.get<String>(PinCodeDestination.CODE)!!
+
     val pin = MutableStateFlow<String>("")
+
+    val userId = MutableStateFlow<Int?>(null)
 
     fun enterPin(value: String) {
         pin.value = value
     }
 
     fun checkPin() {
-//        viewModelScope.launch {
-//            runCatching {
-//                val response = authApi.checkAuth(CheckAuthDTOE(phone, phone.substring(0, 1)))
-//                if (response.isSuccessful) {
-//                    response.body()?.let { item ->
-//                        _screenState.update { it.copy(isSuccess = item.isSuccess) }
-//                    }
-//                } else {
-//                    Log.d("AuthApiError", response.message().toString())
-//                }
-//            }.onFailure { error ->
-//                Log.d("AuthApiError", "Failed to fetch data: ${error.message}")
-//            }
-//        }
+        viewModelScope.launch {
+            runCatching {
+                val response = authApi.checkAuth(CheckAuthDTOE(phone, code))
+                if (response.isSuccessful) {
+                    response.body()?.let { item ->
+                        userId.value = item.userId
+                    }
+                } else {
+                    Log.d("AuthApiError", response.message().toString())
+                }
+            }.onFailure { error ->
+                Log.d("AuthApiError", "Failed to fetch data: ${error.message}")
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.example.feature_auth.ui.register
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.example.core_navigation.route.PinCodeDestination
 import com.example.core_navigation.route.RegisterDestination
 import com.example.feature_auth.ui.register.model.ScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,6 +18,9 @@ class RegisterViewModel @Inject constructor(
 ) : ViewModel() {
 
     var phone = savedStateHandle.get<String>(RegisterDestination.PHONE)!!
+
+    var code = savedStateHandle.get<String>(RegisterDestination.CODE)!!
+
 
     val name = MutableStateFlow<String>("")
 

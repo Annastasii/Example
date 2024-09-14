@@ -6,7 +6,7 @@ import androidx.navigation.navArgument
 import com.example.core_navigation.NavigationDestination
 
 object PinCodeDestination : NavigationDestination {
-    override fun route(): String = "$PIN_CODE_SCREEN_ROUTE/{$PHONE}"
+    override fun route(): String = "$PIN_CODE_SCREEN_ROUTE/{$PHONE}/{$CODE}"
 
     override val arguments: List<NamedNavArgument>
         get() = listOf(
@@ -14,8 +14,9 @@ object PinCodeDestination : NavigationDestination {
         )
 
     const val PHONE = "phone"
+    const val CODE = "code"
     private const val PIN_CODE_SCREEN_ROUTE = "pin_code_screen"
 
-    fun createRoute(phone: String) =
-        "$PIN_CODE_SCREEN_ROUTE/$phone"
+    fun createRoute(code: String, phone: String) =
+        "$PIN_CODE_SCREEN_ROUTE/$phone/$code"
 }
