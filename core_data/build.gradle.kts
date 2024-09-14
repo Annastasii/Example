@@ -45,6 +45,7 @@ dependencies {
 
     implementation(project(":auth:core_auth:core_auth_api"))
     implementation(project(":core_data:core_network"))
+    implementation(project(":core_data:core_database"))
 
     // Moshi
     implementation("com.squareup.moshi:moshi:1.12.0")
@@ -66,4 +67,8 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
     kapt("com.google.dagger:hilt-android-compiler:2.52")
+}
+
+kapt {
+    correctErrorTypes = true
 }

@@ -22,8 +22,10 @@ import com.example.core_navigation.route.RegisterDestination
 import com.example.core_ui.CustomColor
 import com.example.core_ui.FontStyle
 import com.example.core_ui.Padding
+import com.example.core_ui.view.dialog.ProgressDialog
 import com.example.feature_auth.R
 import com.example.feature_auth.domain.Constants
+import com.example.feature_auth.ui.auth.model.NavScreen
 import com.example.feature_auth.ui.auth.view.PhoneNumberGroup
 
 @Composable
@@ -31,7 +33,9 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
     val phone = viewModel.phoneNumber.collectAsState().value
     val screenState = viewModel.screenState.collectAsState().value
     val code = viewModel.code.collectAsState().value
-    viewModel.f()
+    if (screenState.isProgress) {
+        ProgressDialog()
+    }
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -53,7 +57,10 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
                 phoneNumber = phone,
                 screenState = screenState,
                 code = code,
-                onButtonClick = { navController.navigate(PinCodeDestination.createRoute(code + phone)) },
+                onButtonClick = {
+                    navController.navigate(PinCodeDestination.createRoute(code + phone))
+                    viewModel.authorization(code + phone)
+                },
                 onChangePhone = viewModel::onChangeNumber,
                 onChangeCode = viewModel::onChangeCode,
                 onChangeFlag = viewModel::onChangeFlag
@@ -65,9 +72,8 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
                 color = if (enable) CustomColor.LinkColor else CustomColor.Grey,
                 style = FontStyle.regular_16,
                 modifier = Modifier.clickable {
-                    if (enable) navController.navigate(
-                        RegisterDestination.createRoute(code + phone)
-                    )
+                    viewModel.authorization(code + phone)
+                    navController.navigate(RegisterDestination.createRoute(code + phone))
                 }
             )
         }

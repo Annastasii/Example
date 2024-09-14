@@ -42,7 +42,8 @@ android {
 
 dependencies {
 
-    api(project(":auth:core_auth"))
+    api(project(":auth:core_auth:core_auth_api"))
+    implementation(project(":core_data:core_network"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -67,6 +68,10 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     kapt("com.google.dagger:hilt-android-compiler:2.52")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation(project(":core_ui"))
     implementation(project(":core_navigation"))

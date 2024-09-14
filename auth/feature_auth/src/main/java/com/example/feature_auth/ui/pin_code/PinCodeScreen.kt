@@ -31,7 +31,10 @@ import com.example.feature_auth.domain.Constants.PIN_COUNT
 import com.example.feature_auth.ui.pin_code.view.PinCodeTextField
 
 @Composable
-fun PinCodeScreen(navController: NavController, viewModel: PinCodeViewModel = hiltViewModel()) {
+fun PinCodeScreen(
+    navController: NavController,
+    viewModel: PinCodeViewModel = hiltViewModel()
+) {
     val pin = viewModel.pin.collectAsState().value
     val isPinCorrect = pin == CORRECT_PIN
     Box(

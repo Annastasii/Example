@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.core_auth_api.repository.AuthRepository
 import com.example.core_network.api.AuthApi
 import com.example.core_network.dto.dtoe.AuthDTOE
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -17,7 +18,7 @@ class AuthRepositoryImpl @Inject constructor(
                     item.isSuccess
                 }
             } else {
-                Log.d("testy", response.message().toString())
+                Log.d("AuthApiError", response.message().toString())
             }
         }.onFailure { Log.d("AuthApiError", "Failed to fetch data: ${it.message}") }
     }

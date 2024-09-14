@@ -103,5 +103,7 @@ dependencies {
     implementation(project(":core_data:core_database"))
     implementation(project(":core_data:core_network"))
     implementation(project(":auth:core_auth:core_auth_api"))
-
+}
+kapt {
+    correctErrorTypes = true
 }
