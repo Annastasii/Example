@@ -2,8 +2,10 @@ package com.example.core_network.api
 
 import com.example.core_network.dto.dtoe.AuthDTOE
 import com.example.core_network.dto.dtoe.CheckAuthDTOE
+import com.example.core_network.dto.dtoe.RefreshTokenDTOE
 import com.example.core_network.dto.dtoe.RegisterDTOE
 import com.example.core_network.dto.dtoi.AuthDTOI
+import com.example.core_network.dto.dtoi.RefreshTokenDTOI
 import com.example.core_network.dto.dtoi.SuccessAuthDTOI
 import retrofit2.Response
 import retrofit2.http.Body
@@ -20,5 +22,10 @@ interface AuthApi {
     suspend fun register(@Body auth: RegisterDTOE): Response<SuccessAuthDTOI>
 
     @POST("docs#/api/v1/users/fefresh-token/")
-    suspend fun refreshToken(@Body auth: RegisterDTOE): Response<SuccessAuthDTOI>
+     fun refreshToken(@Body auth: RefreshTokenDTOE): Response<RefreshTokenDTOI>
+
+    data class TokenResponse(
+        val accessToken: String,
+        val refreshToken: String
+    )
 }

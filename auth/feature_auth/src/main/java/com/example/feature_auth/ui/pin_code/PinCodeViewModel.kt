@@ -1,9 +1,11 @@
 package com.example.feature_auth.ui.pin_code
 
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.core_auth_api.AuthTokenProvider
 import com.example.core_navigation.route.PinCodeDestination
 import com.example.core_network.api.AuthApi
 import com.example.core_network.dto.dtoe.AuthDTOE
@@ -18,6 +20,7 @@ import javax.inject.Inject
 class PinCodeViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val authApi: AuthApi,
+    private val authTokenProvider: AuthTokenProvider
 ) : ViewModel() {
 
     var phone = savedStateHandle.get<String>(PinCodeDestination.PHONE)!!
@@ -39,6 +42,9 @@ class PinCodeViewModel @Inject constructor(
                 if (response.isSuccessful) {
                     response.body()?.let { item ->
                         userId.value = item.userId
+                        
+                        authTokenProvider.saveAccessToken(item.accessToken)
+                        authTokenProvider.saveRefreshToken(item.refreshToken)
                     }
                 } else {
                     Log.d("AuthApiError", response.message().toString())
