@@ -1,6 +1,7 @@
 package com.example.core_network.di
 
 import com.example.core_network.api.AuthApi
+import com.example.core_network.api.ProfileApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,9 +13,15 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-        @Provides
-        @Singleton
-        fun provideGoogleDriveApi(retrofit: Retrofit): AuthApi {
-            return retrofit.create(AuthApi::class.java)
-        }
+    @Provides
+    @Singleton
+    fun provideAuthApi(retrofit: Retrofit): AuthApi {
+        return retrofit.create(AuthApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProfileApi(retrofit: Retrofit): ProfileApi {
+        return retrofit.create(ProfileApi::class.java)
+    }
 }

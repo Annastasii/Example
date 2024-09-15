@@ -72,4 +72,12 @@ class RegisterViewModel @Inject constructor(
             }
         }
     }
+
+    fun deleteUserId(f: () -> Unit) {
+        runCatching {
+            f()
+        }.onSuccess {
+           _screenState.update { it.copy(userId = null) }
+        }
+    }
 }

@@ -38,7 +38,9 @@ fun PinCodeScreen(
     val pin = viewModel.pin.collectAsState().value
     val isPinCorrect = pin == CORRECT_PIN
     viewModel.userId.collectAsState().value?.let {
-        navController.navigate(DialogListDestination.route())
+        viewModel.deleteUserId {
+            navController.navigate(DialogListDestination.route())
+        }
     }
     Box(
         contentAlignment = Alignment.Center,

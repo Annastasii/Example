@@ -37,7 +37,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
     val username = viewModel.username.collectAsState().value
     val screenState = viewModel.screenState.collectAsState().value
     screenState.userId?.let {
-        navController.navigateAndClear(DialogListDestination.route())
+        viewModel.deleteUserId { navController.navigateAndClear(DialogListDestination.route()) }
     }
     Box(
         contentAlignment = Alignment.Center,
@@ -72,7 +72,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
                     style = FontStyle.regular_14
                 )
             }
-            if (screenState.incorrectName){
+            if (screenState.incorrectName) {
                 Spacer(modifier = Modifier.height(Padding._8))
                 Text(
                     text = stringResource(id = R.string.incorrect),

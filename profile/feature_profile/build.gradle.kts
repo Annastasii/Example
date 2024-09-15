@@ -45,7 +45,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(project(":message:feature_message"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,6 +66,13 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.52")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
 
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
     implementation(project(":core_ui"))
     implementation(project(":core_navigation"))
+    implementation(project(":message:feature_message"))
+    implementation(project(":core_data:core_network"))
+    implementation(project(":core_data:core_database"))
 }

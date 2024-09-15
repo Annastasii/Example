@@ -48,4 +48,12 @@ class PinCodeViewModel @Inject constructor(
             }
         }
     }
+
+    fun deleteUserId(f: () -> Unit) {
+        runCatching {
+            f()
+        }.onSuccess {
+            userId.value = null
+        }
+    }
 }
