@@ -48,7 +48,7 @@ fun PinCodeScreen(
     ) {
         Column(modifier = Modifier.padding(Padding._16)) {
             Text(
-                text = stringResource(id = R.string.send, viewModel.code + viewModel.phone),
+                text = stringResource(id = R.string.send, viewModel.phone),
                 color = CustomColor.TextColor,
                 style = FontStyle.medium_16
             )

@@ -25,7 +25,6 @@ import com.example.core_ui.Padding
 import com.example.core_ui.view.dialog.ProgressDialog
 import com.example.feature_auth.R
 import com.example.feature_auth.domain.Constants
-import com.example.feature_auth.ui.auth.model.NavScreen
 import com.example.feature_auth.ui.auth.view.PhoneNumberGroup
 
 @Composable
@@ -58,7 +57,7 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
                 screenState = screenState,
                 code = code,
                 onButtonClick = {
-                    navController.navigate(PinCodeDestination.createRoute(code, phone))
+                    navController.navigate(PinCodeDestination.createRoute(code + phone))
                     viewModel.authorization(code + phone)
                 },
                 onChangePhone = viewModel::onChangeNumber,
@@ -73,7 +72,7 @@ fun AuthScreen(navController: NavController, viewModel: AuthViewModel = hiltView
                 style = FontStyle.regular_16,
                 modifier = Modifier.clickable {
                     viewModel.authorization(code + phone)
-                    navController.navigate(RegisterDestination.createRoute(code, phone))
+                    navController.navigate(RegisterDestination.createRoute(code + phone))
                 }
             )
         }

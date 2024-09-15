@@ -15,13 +15,13 @@ interface AuthApi {
     @POST("api/v1/users/send-auth-code/")
     suspend fun sendAuth(@Body auth: AuthDTOE): Response<AuthDTOI>
 
-    @POST("docs#/api/v1/users/check-auth-code/")
+    @POST("api/v1/users/check-auth-code/")
     suspend fun checkAuth(@Body auth: CheckAuthDTOE): Response<SuccessAuthDTOI>
 
-    @POST("docs#/api/v1/users/register/")
+    @POST("api/v1/users/register/")
     suspend fun register(@Body auth: RegisterDTOE): Response<SuccessAuthDTOI>
 
-    @POST("docs#/api/v1/users/fefresh-token/")
+    @POST("api/v1/users/fefresh-token/")
      fun refreshToken(@Body auth: RefreshTokenDTOE): Response<RefreshTokenDTOI>
 
     data class TokenResponse(

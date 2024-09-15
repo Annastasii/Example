@@ -7,7 +7,7 @@ import com.example.core_navigation.NavigationDestination
 
 object RegisterDestination : NavigationDestination {
 
-    override fun route(): String = "$REGISTER_SCREEN_ROUTE/{$PHONE}/{$CODE}"
+    override fun route(): String = "$REGISTER_SCREEN_ROUTE/{$PHONE}"
 
     override val arguments: List<NamedNavArgument>
         get() = listOf(
@@ -15,9 +15,8 @@ object RegisterDestination : NavigationDestination {
         )
 
     const val PHONE = "phone"
-    const val CODE = "code"
     private const val REGISTER_SCREEN_ROUTE = "register_screen"
 
-    fun createRoute(code: String, phone: String) =
-        "$REGISTER_SCREEN_ROUTE/$phone/$code"
+    fun createRoute(phone: String) =
+        "$REGISTER_SCREEN_ROUTE/$phone"
 }

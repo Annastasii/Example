@@ -53,7 +53,7 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
             )
             Spacer(modifier = Modifier.height(Padding._38))
             InfoColumn(
-                phone = viewModel.code + viewModel.phone,
+                phone = viewModel.phone,
                 name = name,
                 username = username,
                 isError = screenState.showMessage,
