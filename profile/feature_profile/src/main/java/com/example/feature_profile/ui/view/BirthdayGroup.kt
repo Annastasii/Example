@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
@@ -87,18 +86,20 @@ fun BirthdayGroup(date: String, onChangeDate: (String) -> Unit) {
                 },
 //                visualTransformation = PhoneVisualTransformation(mask, maskNumber)
             )
-            Spacer(modifier = Modifier.height(Padding._12))
-            Text(
-                text = stringResource(id = R.string.zodiac),
-                color = CustomColor.Grey,
-                style = FontStyle.regular_12
-            )
-            Spacer(modifier = Modifier.height(Padding._4))
-            Text(
-                text = getZodiac(date),
-                color = CustomColor.TextColor,
-                style = FontStyle.regular_16
-            )
+            if (date.isNotBlank() && date.length == 10) {
+                Spacer(modifier = Modifier.height(Padding._12))
+                Text(
+                    text = stringResource(id = R.string.zodiac),
+                    color = CustomColor.Grey,
+                    style = FontStyle.regular_12
+                )
+                Spacer(modifier = Modifier.height(Padding._4))
+                Text(
+                    text = getZodiac(date),
+                    color = CustomColor.TextColor,
+                    style = FontStyle.regular_16
+                )
+            }
         }
     }
 }

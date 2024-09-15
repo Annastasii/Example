@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.core_database.dao.MessageDao
 import com.example.core_database.dao.ProfileDao
+import com.example.core_database.dao.UserDao
 import com.example.core_database.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -35,6 +36,11 @@ object DataBaseModule {
     @Provides
     fun provideProfileDao(database: AppDatabase): ProfileDao {
         return database.profileDao()
+    }
+
+    @Provides
+    fun provideUserDao(database: AppDatabase): UserDao {
+        return database.userDao()
     }
 
 }

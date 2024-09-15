@@ -35,7 +35,7 @@ import com.example.feature_profile.ui.view.PhoneNumberGroup
 
 @Composable
 fun ProfileScreen(navController: NavController, viewModel: ProfileViewModel = hiltViewModel()) {
-    val profile = viewModel.model.collectAsState().value
+    val profile = viewModel.profileModel.collectAsState().value
     Scaffold(bottomBar = { BottomAppBar(navController) }) { innerPadding ->
         Column(
             modifier = Modifier
@@ -43,47 +43,51 @@ fun ProfileScreen(navController: NavController, viewModel: ProfileViewModel = hi
                 .background(CustomColor.PrimaryBgColor)
                 .padding(innerPadding)
         ) {
-            MainInfoGroup(profile = profile)
-            Spacer(modifier = Modifier.height(Padding._16))
-            Box(
-                Modifier
-                    .padding(Padding._12)
-                    .background(CustomColor.SecondaryBgColor, RoundedCornerShape(10.dp))
-                    .fillMaxWidth()
-            ) {
-                Column(
+            profile?.let {
+                MainInfoGroup(profile = profile)
+                Spacer(modifier = Modifier.height(Padding._16))
+                Box(
                     Modifier
-                        .padding(Padding._16)
+                        .padding(Padding._12)
+                        .background(CustomColor.SecondaryBgColor, RoundedCornerShape(10.dp))
                         .fillMaxWidth()
                 ) {
-                    PhoneNumberGroup(phone = "7868665")
-                    Spacer(modifier = Modifier.height(Padding._12))
-                    BirthdayGroup(date = profile.birthday) { viewModel.onChangeBirthday(it) }
-                    Spacer(modifier = Modifier.height(Padding._12))
-                    CityGroup(city = profile.city) { viewModel.onChangeCity(it) }
-                    Spacer(modifier = Modifier.height(Padding._12))
-                    AboutMeGroup(about = profile.aboutMe) { viewModel.onChangeAbout(it) }
-                    Spacer(modifier = Modifier.height(Padding._12))
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Button(
-                            enabled = viewModel.isEdit.collectAsState().value,
-                            onClick = { },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(48.dp)
-                                .weight(1f),
-                            shape = RoundedCornerShape(10.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = CustomColor.ActiveButtonColor,
-                                disabledContainerColor = CustomColor.NotActiveButtonColor,
-                                contentColor = CustomColor.TextColor,
-                                disabledContentColor = CustomColor.NotActiveTextColor
-                            )
-                        ) {
-                            Text(
-                                text = stringResource(R.string.save),
-                                style = FontStyle.regular_14
-                            )
+                    Column(
+                        Modifier
+                            .padding(Padding._16)
+                            .fillMaxWidth()
+                    ) {
+                        PhoneNumberGroup(phone = "7868665")
+                        Spacer(modifier = Modifier.height(Padding._12))
+                        BirthdayGroup(
+                            date = profile.birthday ?: ""
+                        ) { viewModel.onChangeBirthday(it) }
+                        Spacer(modifier = Modifier.height(Padding._12))
+                        CityGroup(city = profile.city ?: "") { viewModel.onChangeCity(it) }
+                        Spacer(modifier = Modifier.height(Padding._12))
+                        AboutMeGroup(about = profile.instagram ?: "") { viewModel.onChangeAbout(it) }
+                        Spacer(modifier = Modifier.height(Padding._12))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Button(
+                                enabled = viewModel.isEdit.collectAsState().value,
+                                onClick = { },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(48.dp)
+                                    .weight(1f),
+                                shape = RoundedCornerShape(10.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = CustomColor.ActiveButtonColor,
+                                    disabledContainerColor = CustomColor.NotActiveButtonColor,
+                                    contentColor = CustomColor.TextColor,
+                                    disabledContentColor = CustomColor.NotActiveTextColor
+                                )
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.save),
+                                    style = FontStyle.regular_14
+                                )
+                            }
                         }
                     }
                 }

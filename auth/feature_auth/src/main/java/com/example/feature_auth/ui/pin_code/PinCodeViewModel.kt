@@ -5,8 +5,11 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core_auth_api.AuthTokenProvider
+import com.example.core_database.dao.UserDao
+import com.example.core_database.entity.UserEntity
 import com.example.core_navigation.route.PinCodeDestination
 import com.example.core_network.api.AuthApi
+import com.example.core_network.api.ProfileApi
 import com.example.core_network.dto.dtoe.CheckAuthDTOE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +21,7 @@ class PinCodeViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val authApi: AuthApi,
     private val authTokenProvider: AuthTokenProvider,
+    private val userDao: UserDao
 ) : ViewModel() {
 
     var phone = savedStateHandle.get<String>(PinCodeDestination.PHONE)!!
@@ -39,6 +43,7 @@ class PinCodeViewModel @Inject constructor(
                         userId.value = item.userId
                         authTokenProvider.saveAccessToken(item.accessToken)
                         authTokenProvider.saveRefreshToken(item.refreshToken)
+                        userDao.insert(UserEntity(id = item.userId, isActive = true))
                     }
                 } else {
                     Log.d("AuthApiError", response.message().toString())
