@@ -7,6 +7,6 @@ data class RegisterDTOE(
     val phone: String,
     @Json(name = "name")
     val name: String,
-    @Json(name = "userName")
-    val userName: Int,
+    @Json(name = "username")
+    val username: String,
 )

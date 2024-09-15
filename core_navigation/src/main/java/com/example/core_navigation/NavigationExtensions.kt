@@ -3,6 +3,7 @@ package com.example.core_navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 
@@ -21,3 +22,9 @@ fun NavGraphBuilder.composable(
         content = content
     )
 }
+
+/** Навигация с очисткой бэкстека */
+fun NavController.navigateAndClear(route: String) {
+    navigate(route) { popUpTo(0) }
+}
+

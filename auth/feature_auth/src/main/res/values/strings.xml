@@ -17,4 +17,5 @@
     <string name="name">ФИО</string>
     <string name="username">Имя пользователя</string>
     <string name="usernameMessage">Имя пользователя может содержать:\n Заглавные латинские буквы: от A до Z \n Строчные латинские буквы: от a до z \n Цифры от 0 до 9 \n Символы: -_ </string>
+    <string name="incorrect">Имя пользователя или номер телефона уже используется</string>
 </resources>

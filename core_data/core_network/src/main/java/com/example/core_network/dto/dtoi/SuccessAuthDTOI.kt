@@ -10,5 +10,5 @@ data class SuccessAuthDTOI(
     @Json(name = "user_id")
     val userId: Int,
     @Json(name = "is_user_exists")
-    val isUserExist: Boolean,
+    val isUserExist: Boolean = false,
 )

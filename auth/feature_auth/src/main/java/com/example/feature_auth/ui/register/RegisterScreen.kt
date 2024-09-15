@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.core_navigation.navigateAndClear
 import com.example.core_navigation.route.DialogListDestination
 import com.example.core_ui.CustomColor
 import com.example.core_ui.FontStyle
@@ -35,6 +36,9 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
     val name = viewModel.name.collectAsState().value
     val username = viewModel.username.collectAsState().value
     val screenState = viewModel.screenState.collectAsState().value
+    screenState.userId?.let {
+        navController.navigateAndClear(DialogListDestination.route())
+    }
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -68,14 +72,21 @@ fun RegisterScreen(navController: NavController, viewModel: RegisterViewModel = 
                     style = FontStyle.regular_14
                 )
             }
+            if (screenState.incorrectName){
+                Spacer(modifier = Modifier.height(Padding._8))
+                Text(
+                    text = stringResource(id = R.string.incorrect),
+                    color = CustomColor.TextColor,
+                    style = FontStyle.regular_14
+                )
+            }
             Spacer(modifier = Modifier.height(Padding._38))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Button(
                     enabled = name.isNotBlank() && username.isNotBlank(),
                     onClick = {
-                        if (usernameValidator(username)) navController.navigate(
-                            DialogListDestination.route()
-                        ) else {
+                        if (usernameValidator(username)) viewModel.register()
+                        else {
                             viewModel.showMessage(true)
                         }
                     },
