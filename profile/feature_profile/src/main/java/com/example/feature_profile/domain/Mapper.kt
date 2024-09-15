@@ -21,7 +21,7 @@ object Mapper {
             online,
             created.toString(),
             phone,
-            completedTask
+            completedTask,
         )
 
     fun ProfileEntity.mapToModel(): ProfileModel =
@@ -32,6 +32,7 @@ object Mapper {
             city,
             vk,
             instagram,
+            status,
             id,
             phone,
         )

@@ -84,9 +84,8 @@ fun BirthdayGroup(date: String, onChangeDate: (String) -> Unit) {
                         )
                     }
                 },
-//                visualTransformation = PhoneVisualTransformation(mask, maskNumber)
             )
-            if (date.isNotBlank() && date.length == 10) {
+            if (date.length == 8) {
                 Spacer(modifier = Modifier.height(Padding._12))
                 Text(
                     text = stringResource(id = R.string.zodiac),
@@ -163,7 +162,7 @@ private class DateOffsetMapper(val mask: String, val numberChar: Char) : OffsetM
 }
 
 fun getZodiac(date: String): String {
-    val d = date.substring(5, 10).stringToDate()
+    val d = date.substring(4, 7).stringToDate()
     val calendar = Calendar.getInstance()
     calendar.time = d
     return when {

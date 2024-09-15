@@ -65,12 +65,14 @@ fun ProfileScreen(navController: NavController, viewModel: ProfileViewModel = hi
                         Spacer(modifier = Modifier.height(Padding._12))
                         CityGroup(city = profile.city ?: "") { viewModel.onChangeCity(it) }
                         Spacer(modifier = Modifier.height(Padding._12))
-                        AboutMeGroup(about = profile.instagram ?: "") { viewModel.onChangeAbout(it) }
+                        AboutMeGroup(
+                            about = profile.instagram ?: ""
+                        ) { viewModel.onChangeAbout(it) }
                         Spacer(modifier = Modifier.height(Padding._12))
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Button(
                                 enabled = viewModel.isEdit.collectAsState().value,
-                                onClick = { },
+                                onClick = { viewModel.save() },
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(48.dp)

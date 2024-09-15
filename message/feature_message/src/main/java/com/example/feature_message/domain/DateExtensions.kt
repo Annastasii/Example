@@ -8,7 +8,7 @@ private const val DATE = "Date"
 private val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
 private val dateTimeFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
 private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-private val onlyDate = SimpleDateFormat("MM-dd", Locale.getDefault())
+private val onlyDate = SimpleDateFormat("MMdd", Locale.getDefault())
 
 
 /** Преобразует дату в строку с точностью до дня */

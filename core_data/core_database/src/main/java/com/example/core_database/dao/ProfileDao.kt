@@ -15,4 +15,7 @@ interface ProfileDao {
 
     @Query("SELECT * FROM profile WHERE id == :id")
     fun getProfileFlow(id: Int): Flow<ProfileEntity?>
+
+    @Query("UPDATE profile SET birthday = :birthday, city = :city, instagram = :instagram WHERE id ==:id")
+    suspend fun updateProfile(birthday: String?, city: String?, instagram: String?, id: Int)
 }

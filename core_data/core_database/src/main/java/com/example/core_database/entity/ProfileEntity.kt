@@ -2,7 +2,6 @@ package com.example.core_database.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.LocalDateTime
 
 @Entity(tableName = "profile")
 data class ProfileEntity(
@@ -20,5 +19,5 @@ data class ProfileEntity(
     val online: Boolean,
     val created: String?,
     val phone: String,
-    val completedTask: Int,
+    val completedTask: Int
 )

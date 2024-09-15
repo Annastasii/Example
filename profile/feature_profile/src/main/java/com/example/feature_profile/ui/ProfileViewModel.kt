@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.core_database.dao.ProfileDao
 import com.example.core_database.dao.UserDao
 import com.example.core_network.api.ProfileApi
+import com.example.core_network.dto.dtoe.ProfileDTOE
 import com.example.feature_profile.domain.Mapper.mapToEntity
 import com.example.feature_profile.domain.Mapper.mapToModel
 import com.example.feature_profile.ui.models.ProfileModel
@@ -48,13 +49,44 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
-    fun save(){
-
+    fun save() {
+        viewModelScope.launch {
+            runCatching {
+                val profile = profileModel.value!!
+                val response = profileApi.putProfile(
+                    ProfileDTOE(
+                        profile.name,
+                        profile.username,
+                        profile.birthday,
+                        profile.city,
+                        profile.vk,
+                        profile.instagram,
+                        profile.status,
+                        null
+                    )
+                )
+                if (response.isSuccessful) {
+                    response.body()?.let { item ->
+                        with(profileModel.value!!) {
+                            dao.updateProfile(birthday, city, instagram, id)
+                        }
+                    }
+                } else {
+                    with(profileModel.value!!) {
+                        dao.updateProfile(birthday, city, instagram, id)
+                    }
+                    Log.d("ProfileApiError", response.toString())
+                }
+            }.onFailure { error ->
+                Log.d("ProfileApiError", "Failed to fetch data: ${error.message}")
+            }
+                .onSuccess { isEdit.value = false }
+        }
     }
 
     private fun subscribeProfile() {
         viewModelScope.launch {
-            if (userDao.getActiveUser() != null){
+            if (userDao.getActiveUser() != null) {
                 dao.getProfileFlow(userDao.getActiveUser()!!.id).collect {
                     profileModel.value = it?.mapToModel()
                 }
@@ -76,5 +108,4 @@ class ProfileViewModel @Inject constructor(
         profileModel.update { it!!.copy(instagram = value) }
         isEdit.value = true
     }
-
 }
