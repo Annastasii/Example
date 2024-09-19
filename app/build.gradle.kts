@@ -103,6 +103,8 @@ dependencies {
     implementation(project(":core_data:core_database"))
     implementation(project(":core_data:core_network"))
     implementation(project(":auth:core_auth:core_auth_api"))
+
+    implementation ("androidx.work:work-runtime-ktx:2.7.1")
 }
 kapt {
     correctErrorTypes = true
